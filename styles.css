@@ -20,6 +20,6 @@ body {
 }
 
 .grid-item {
-	background: white;
+	background-color: white;
 	border: 1px solid #ccc;
 }

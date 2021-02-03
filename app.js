@@ -13,13 +13,19 @@ function createGrid(gridNum) {
         gridSquare.classList.add('grid-item');
 
         // Add hover event listener
-        // gridSquare.addEventListener('mouseover', changeColor);
+        gridSquare.addEventListener('mouseover', changeColor);
 
         // Add square to container
         container.appendChild(gridSquare);
     }
 }
 
+function changeColor(e) {
+    // Create a random color
+    let color = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+
+    e.target.style.backgroundColor = color;
+}
 
 
 
