@@ -1,6 +1,12 @@
 const container = document.querySelector('.container');
 const clearBtn = document.getElementById('clearBtn');
 const changeSizeBtn = document.getElementById('changeSizeBtn');
+const colorPick = document.getElementById('pickColor');
+const blackBtn = document.getElementById('blackBtn');
+const randomBtn = document.getElementById('randomBtn');
+const eraserBtn = document.getElementById('eraserBtn');
+
+let color = 'black';
 
 function createGrid(gridNum) {
     let gridArea = gridNum * gridNum;
@@ -14,35 +20,79 @@ function createGrid(gridNum) {
         let gridSquare = document.createElement('div');
         gridSquare.classList.add('grid-item');
 
-        // Add hover event listener
-        gridSquare.addEventListener('mouseover', changeColor);
+        // By default it's the color black
+        gridSquare.addEventListener('mouseover', blackColor);
 
         // Add square to container
         container.appendChild(gridSquare);
     }
 }
 
-function changeColor(e) {
+
+function randomColor(e) {
     // Create a random color
-    let color = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+    color = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
 
     e.target.style.backgroundColor = color;
 }
 
-function clearGrid() {
-    let gridItems = container.children; 
+function pickColor(e) {
+    // Color you picked
+    color = colorPick.value;
+    
+    e.target.style.backgroundColor = color;
+}
 
+function blackColor(e) {
+    color = 'black';
+    
+    e.target.style.backgroundColor = color;
+}
+
+function eraseColor(e) {
+    color = 'white';
+
+    e.target.style.backgroundColor = color;
+}
+
+function updateColor(x) {
+    switch (x) {
+        case 'black':
+            blackColor(e);
+            break;
+        case 'random':
+            randomColor(e);
+            break;
+        case 'pick':
+            pickColor(e);
+            break;
+        // case 'greyscale':
+        //     greyscaleColor(e);
+        //     break;
+    }
+}
+
+//
+//
+//
+// 
+// 
+// 
+// 
+// 
+
+function clearGrid() {
     // Go through each square and set its background color to white
-    Array.from(gridItems).forEach(item => {
+    Array.from(container.children).forEach(item => {
         item.style.backgroundColor = '#fff';
     })
 }
 
 function changeGridSize() {
-    let newGridSize = prompt('Enter a new size for your grid (between 1 - 100)', 16);
+    let newGridSize = prompt('Enter a new size for your grid (between 1 - 64)', 16);
 
-    if (newGridSize < 1 || newGridSize > 100 || Number.isNaN(newGridSize)) {
-        alert("Enter a number between 1 and 100.");
+    if (newGridSize < 1 || newGridSize > 64 || Number.isNaN(newGridSize)) {
+        alert("Enter a number between 1 and 64.");
         changeGridSize();
     } else {
         clearGrid();
@@ -62,3 +112,41 @@ function removeGrid() {
 window.addEventListener('load', createGrid(16));
 clearBtn.addEventListener('click', clearGrid);
 changeSizeBtn.addEventListener('click', changeGridSize);
+
+
+// Color buttons
+blackBtn.addEventListener('click', () => {
+    Array.from(container.children).forEach(item => {
+        item.removeEventListener('mouseover', pickColor);
+        item.removeEventListener('mouseover', randomColor);
+        item.removeEventListener('mouseover', eraseColor);
+        item.addEventListener('mouseover', blackColor);
+    })
+})
+
+colorPick.addEventListener('click', () => {
+    Array.from(container.children).forEach(item => {
+        item.removeEventListener('mouseover', blackColor);
+        item.removeEventListener('mouseover', randomColor);
+        item.removeEventListener('mouseover', eraseColor);
+        item.addEventListener('mouseover', pickColor);
+    })
+})
+
+randomBtn.addEventListener('click', () => {
+    Array.from(container.children).forEach(item => {
+        item.removeEventListener('mouseover', blackColor);
+        item.removeEventListener('mouseover', pickColor);
+        item.removeEventListener('mouseover', eraseColor);
+        item.addEventListener('mouseover', randomColor);
+    })
+})
+
+eraserBtn.addEventListener('click', () => {
+    Array.from(container.children).forEach(item => {
+        item.removeEventListener('mouseover', blackColor);
+        item.removeEventListener('mouseover', pickColor);
+        item.removeEventListener('mouseover', randomColor);
+        item.addEventListener('mouseover', eraseColor);
+    })
+})
