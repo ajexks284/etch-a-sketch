@@ -55,32 +55,6 @@ function eraseColor(e) {
     e.target.style.backgroundColor = color;
 }
 
-function updateColor(x) {
-    switch (x) {
-        case 'black':
-            blackColor(e);
-            break;
-        case 'random':
-            randomColor(e);
-            break;
-        case 'pick':
-            pickColor(e);
-            break;
-        // case 'greyscale':
-        //     greyscaleColor(e);
-        //     break;
-    }
-}
-
-//
-//
-//
-// 
-// 
-// 
-// 
-// 
-
 function clearGrid() {
     // Go through each square and set its background color to white
     Array.from(container.children).forEach(item => {
