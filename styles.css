@@ -10,17 +10,86 @@ body {
 	width: 100vw;
 	height: 100vh;
 	font-family: Arial, Helvetica, sans-serif;
+	background-color: #121212;
+	overflow: hidden;
+}
+
+.title {
+	margin: 25px 0 50px 0;
+	color: #fff;
+	font-size: 80px;
+	text-align: center;
+	animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+	from {
+		text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #892cdc, 0 0 40px #892cdc, 0 0 50px #892cdc,
+			0 0 60px #892cdc, 0 0 70px #892cdc;
+	}
+	to {
+		text-shadow: 0 0 20px #fff, 0 0 30px #bc6ff1, 0 0 40px #bc6ff1, 0 0 50px #bc6ff1, 0 0 60px #bc6ff1,
+			0 0 70px #bc6ff1, 0 0 80px #bc6ff1;
+	}
+}
+
+label {
+	color: #fff;
+	font-size: 1rem;
+	cursor: pointer;
+}
+
+input[type="color"] {
+	background: none;
+	border: none;
+	outline: none;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
 }
 
 .container {
 	display: grid;
-	max-width: 800px;
-	min-height: 800px;
+	max-width: 600px;
+	min-height: 600px;
 	border: 2px solid #ccc;
+	margin: 25px auto;
 }
 
 .grid-item {
 	background-color: white;
 	border: 1px solid #ccc;
-	transition: background-color .15s ease;
+	transition: background-color .2s ease;
+}
+
+.grid-buttons,
+.color-buttons {
+	width: 632.5px;
+	/* position: absolute; */
+	/* left: 50%; */
+	/* transform: translateX(-50%); */
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+/* .color-buttons {
+	top: 14%;
+}
+
+.grid-buttons {
+	bottom: 10%;
+} */
+
+.btn {
+	font-size: 1rem;
+	margin: 0 1rem;
+	background: #52057b;
+	outline: none;
+	border: none;
+	padding: .5rem 1rem;
+	color: #fff;
+	font-weight: bold;
+	width: 150px;
+	cursor: pointer;
 }
