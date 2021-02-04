@@ -31,7 +31,6 @@ function updateColor(e, choice) {
     switch (choice) {
         case 'black':
             color = 'black';
-            console.log(this)
             e.target.style.backgroundColor = color;
             break;
         case 'erase':
