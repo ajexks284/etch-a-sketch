@@ -11,11 +11,11 @@ body {
 	height: 100vh;
 	font-family: Arial, Helvetica, sans-serif;
 	background-color: #121212;
-	overflow: hidden;
 }
 
+/* TITLE */
 .title {
-	margin: 25px 0 50px 0;
+	margin: 0px 0 50px 0;
 	color: #fff;
 	font-size: 80px;
 	text-align: center;
@@ -33,10 +33,35 @@ body {
 	}
 }
 
+/* GRID */
+.container {
+	display: grid;
+	max-width: 600px;
+	min-height: 600px;
+	border: 2px solid #ccc;
+	margin: 25px auto;
+}
+
+.grid-item {
+	background-color: white;
+	/* border: 1px solid #ccc; */
+	transition: background-color .2s ease;
+}
+
+/* BUTTONS */
+.grid-buttons,
+.color-buttons {
+	width: 632.5px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+
 label {
 	color: #fff;
 	font-size: 1rem;
 	cursor: pointer;
+	transition: color .35s ease;
 }
 
 input[type="color"] {
@@ -48,43 +73,10 @@ input[type="color"] {
 	cursor: pointer;
 }
 
-.container {
-	display: grid;
-	max-width: 600px;
-	min-height: 600px;
-	border: 2px solid #ccc;
-	margin: 25px auto;
-}
-
-.grid-item {
-	background-color: white;
-	border: 1px solid #ccc;
-	transition: background-color .2s ease;
-}
-
-.grid-buttons,
-.color-buttons {
-	width: 632.5px;
-	/* position: absolute; */
-	/* left: 50%; */
-	/* transform: translateX(-50%); */
-	margin: 0 auto;
-	display: flex;
-	justify-content: space-between;
-}
-
-/* .color-buttons {
-	top: 14%;
-}
-
-.grid-buttons {
-	bottom: 10%;
-} */
-
 .btn {
 	font-size: 1rem;
 	margin: 0 1rem;
-	background: #52057b;
+	background-color: #52057b;
 	outline: none;
 	border: none;
 	padding: .5rem 1rem;
@@ -92,4 +84,15 @@ input[type="color"] {
 	font-weight: bold;
 	width: 150px;
 	cursor: pointer;
+	transition: color .35s ease, background-color .35s ease;
+}
+
+.btn:hover {
+	color: #52057b;
+	background-color: #fff;
+	font-weight: bold;
+}
+
+.btn:hover label {
+	color: #52057b;
 }
